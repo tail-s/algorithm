@@ -9,16 +9,16 @@ public class b2745 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String N = sc.next();
-        char ch = sc.next().charAt(0);
-        int B = changer(ch);
+        int B = sc.nextInt();
         sc.close();
 
-        double ans = 0, target;
+        int ans = 0;
         for (int i=0; i<N.length(); i++) {
-            target = changer(N.charAt(N.length() - 1 - i));
-            ans += Math.pow(B, i) * target;
+            ans += changer(N.charAt(N.length() - 1 - i)) * (int) Math.pow(B, i);
         }
 
-        System.out.println(Math.pow(36, 1));
+        System.out.println(ans);
+
+
     }
 }
