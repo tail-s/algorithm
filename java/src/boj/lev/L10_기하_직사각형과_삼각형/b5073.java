@@ -10,7 +10,7 @@ public class b5073 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
         StringTokenizer st;
-        int a, b, c;kimo
+        int a, b, c;
         String ans;
         while (true) {
             st = new StringTokenizer(br.readLine());
@@ -19,9 +19,14 @@ public class b5073 {
             c = Integer.parseInt(st.nextToken());
             if (a == 0 && b == 0 && c == 0) break;
 
-            ans = "Scalene";
+            ans = "";
 
-            if (Math.max(a, Math.max(b, c)) )
+            if (!((a + b > c) && (b + c > a) && (c + a > b))) ans = "Invalid";
+            else if (a == b && b == c) ans = "Equilateral";
+            else if (a == b || b == c || c == a) ans = "Isosceles";
+            else ans = "Scalene";
+            sb.append(ans).append("\n");
         }
+        System.out.println(sb);
     }
 }
