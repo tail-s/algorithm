@@ -5,8 +5,11 @@ import java.util.Scanner;
 public class b15894 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        // 4 -> 
+        long n = sc.nextLong();
+        sc.close();
 
-        System.out.println(x + " " + y);
+        long ans = 4 * n;
+
+        System.out.println(ans);
     }
 }
