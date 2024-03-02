@@ -5,10 +5,13 @@ import java.util.Scanner;
 public class b24313 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int a = sc.nextInt();
-        int b = sc.nextInt();
+        int a1 = sc.nextInt();
+        int a0 = sc.nextInt();
         int c = sc.nextInt();
-        int d = sc.nextInt();
+        int n0 = sc.nextInt();
+        sc.close();
+
+        System.out.println(a1 * n0 + a0 <= c * n0 && a1 <= c ? 1 : 0);
         
     }
 }
