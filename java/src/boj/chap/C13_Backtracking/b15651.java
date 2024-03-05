@@ -2,9 +2,8 @@ package boj.chap.C13_Backtracking;
 
 import java.util.Scanner;
 
-public class b15649 {
+public class b15651 {
     public static int N, M;
-    public static boolean[] visited;
     public static int[] answer;
     public static StringBuilder sb = new StringBuilder();
     public static void dfs(int depth) {
@@ -16,13 +15,9 @@ public class b15649 {
             sb.append("\n");
             return;
         }
-
         for (int i=1; i<=N; i++) {
-            if (visited[i]) continue;
-            visited[i] = true;
             answer[depth] = i;
-            dfs(depth + 1);
-            visited[i] = false;
+            dfs(depth+1);
         }
     }
     public static void main(String[] args) {
@@ -31,10 +26,8 @@ public class b15649 {
         M = sc.nextInt();
         sc.close();
 
-        visited = new boolean[N+1];
         answer = new int[M];
         dfs(0);
-
         System.out.println(sb);
 
     }
