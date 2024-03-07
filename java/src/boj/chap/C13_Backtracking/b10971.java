@@ -7,13 +7,15 @@ public class b10971 {
     public static int[][] W;
     public static boolean[] visited;
     public static void dfs(int depth, int location, int cost, int home) {
-        if (depth == N) {
-            ans = Math.min(ans, cost);
+        if (cost >= ans) return;
+
+        if (depth == N-1) {
+            if (W[location][home] != 0) ans = Math.min(ans, cost + W[location][home]);
             return;
         }
 
         for (int i=0; i<N; i++) {
-            if (visited[i] || W[location][i] == 0 || (depth != N-1 && i == home)) continue;
+            if (visited[i] || W[location][i] == 0) continue;
             visited[i] = true;
             dfs(depth+1, i, cost+W[location][i], home);
             visited[i] = false;
@@ -29,7 +31,8 @@ public class b10971 {
 
         for (int i=0; i<N; i++) {
             visited = new boolean[N];
-            dfs(0, 0, 0, i);
+            visited[i] = true;
+            dfs(0, i, 0, i);
         }
         System.out.println(ans);
 
