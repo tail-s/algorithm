@@ -5,20 +5,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class b16987 {
-    public static int N, ans = Integer.MAX_VALUE;
+    public static int N, ans = -1;
     public static List<Egg> eggs = new ArrayList<>();
-    public static boolean isEnd() {
-        boolean result = true;
-        int cnt = 0;
-        for (int i=0; i<N; i++) {
-            if (eggs.get(i).hp > 0) cnt++;
-            if (cnt > 1) {
-                result = false;
-                break;
-            }
-        }
-        return result;
-    }
     public static class Egg {
         int hp, wei;
         public Egg(int hp, int wei) {
@@ -27,28 +15,37 @@ public class b16987 {
         }
     }
     public static void dfs(int depth, int cnt) {
-        if (cnt >= ans) return;
-        if (isEnd()) {
-            ans = cnt;
+        if (depth == N) {
+            ans = Math.max(ans, cnt);
             return;
         }
-        if (eggs.get(depth).hp <= 0) dfs(depth+1, cnt);
+
+//        if (eggs.get(depth).hp <= 0) {
+//            dfs(depth+1, cnt);
+
+//            return;
+//        }
 
         Egg selected = eggs.get(depth), target;
+        int broken;
 
         for (int i=0; i<N; i++) {
-            if (depth == i || eggs.get(i).hp <= 0) continue;
+            if (eggs.get(i).hp <= 0) continue;
             target = eggs.get(i);
 
             selected.hp -= target.wei;
             target.hp -= selected.wei;
-            if (selected.hp > target.wei) {
-                dfs(depth, cnt+1);
+
+            broken = 0;
+            if (target.hp <= 0) broken++;
+            if (selected.hp <= 0) {
+                broken++;
+                dfs(depth+1, cnt+broken);
+                selected.hp += target.wei;
+                target.hp += selected.wei;
             } else {
-                dfs(depth+1, cnt+1);
+                dfs(depth, cnt+broken);
             }
-            selected.hp += target.wei;
-            target.hp += selected.wei;
 
         }
 
