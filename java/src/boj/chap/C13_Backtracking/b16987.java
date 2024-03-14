@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+// Now Solving
 public class b16987 {
     public static int N, ans = -1;
     public static List<Egg> eggs = new ArrayList<>();
