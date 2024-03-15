@@ -1,5 +1,6 @@
 package boj.lev.L13_정렬;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class b2750 {
@@ -14,13 +15,16 @@ public class b2750 {
         StringBuilder sb = new StringBuilder();
 
         // 선택정렬 O(n^2)
-        for (int i=0; i<N-1; i++)
-            for (int j=i+1; j<N; j++)
-                if (arr[i] > arr[j]) {
-                    int tmp = arr[j];
-                    arr[j] = arr[i];
-                    arr[i] = tmp;
-                }
+//        for (int i=0; i<N-1; i++)
+//            for (int j=i+1; j<N; j++)
+//                if (arr[i] > arr[j]) {
+//                    int tmp = arr[j];
+//                    arr[j] = arr[i];
+//                    arr[i] = tmp;
+//                }
+
+        // Arrays.sort O(nlong) ~ O(n^2) : dual-pivot Quicksort
+        Arrays.sort(arr);
 
         for (int i : arr) sb.append(i).append("\n");
         System.out.println(sb);
