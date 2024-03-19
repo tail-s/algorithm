@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-// Now Solving
 public class b16987 {
     public static int N, ans = -1;
     public static List<Egg> eggs = new ArrayList<>();
@@ -15,40 +14,29 @@ public class b16987 {
             this.wei = wei;
         }
     }
-    public static void dfs(int depth, int cnt) {
+    public static void dfs(int depth) {
         if (depth == N) {
+            int cnt = 0;
+            for (Egg egg : eggs) if (egg.hp <= 0) cnt++;
             ans = Math.max(ans, cnt);
             return;
         }
 
-//        if (eggs.get(depth).hp <= 0) {
-//            dfs(depth+1, cnt);
-
-//            return;
-//        }
-
         Egg selected = eggs.get(depth), target;
-        int broken;
+        boolean noTarget = true;
 
         for (int i=0; i<N; i++) {
-            if (eggs.get(i).hp <= 0) continue;
             target = eggs.get(i);
+            if (i == depth || target.hp <= 0 || selected.hp <= 0) continue;
+            noTarget = false;
 
             selected.hp -= target.wei;
             target.hp -= selected.wei;
-
-            broken = 0;
-            if (target.hp <= 0) broken++;
-            if (selected.hp <= 0) {
-                broken++;
-                dfs(depth+1, cnt+broken);
-                selected.hp += target.wei;
-                target.hp += selected.wei;
-            } else {
-                dfs(depth, cnt+broken);
-            }
-
+            dfs(depth+1);
+            selected.hp += target.wei;
+            target.hp += selected.wei;
         }
+        if (noTarget) dfs(depth+1);
 
 
     }
@@ -58,7 +46,7 @@ public class b16987 {
         for (int i=0; i<N; i++) eggs.add(new Egg(sc.nextInt(), sc.nextInt()));
         sc.close();
 
-        dfs(0, 0);
+        dfs(0);
         System.out.println(ans);
 
 
