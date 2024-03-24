@@ -12,8 +12,8 @@ public class b18430 {
             return;
         }
 
-        int r = depth / N;
-        int c = depth % N;
+        int r = depth / M;
+        int c = depth % M;
 
         if (r+1 < N && c+1 < M && !visited[r][c] && !visited[r][c+1] && !visited[r+1][c]) {
             visited[r][c] = visited[r][c+1] = visited[r+1][c] = true;
