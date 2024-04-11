@@ -3,7 +3,7 @@ package boj.chap.C1_Data_Structure;
 import java.io.*;
 import java.util.*;
 
-public class b2346_solving {
+public class b2346 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
