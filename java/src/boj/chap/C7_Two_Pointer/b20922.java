@@ -21,7 +21,6 @@ public class b20922 {
             e++;
             ans = Math.max(ans, e - s);
         }
-
         System.out.println(ans);
 
     }
