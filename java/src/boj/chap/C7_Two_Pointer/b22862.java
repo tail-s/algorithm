@@ -2,7 +2,7 @@ package boj.chap.C7_Two_Pointer;
 
 import java.util.Scanner;
 
-public class b22862_solving {
+public class b22862 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
