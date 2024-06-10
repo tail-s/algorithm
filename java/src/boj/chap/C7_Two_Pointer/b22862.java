@@ -11,7 +11,7 @@ public class b22862 {
         for (int i = 0; i < N; i++) { S[i] = sc.nextInt(); }
         sc.close();
 
-        int s = 0, e = 0, del = 0, cnt = 0, ans = 0;
+        int s = 0, e = 0, del = 0, ans = 0;
         while (e < N) {
             if (S[e] % 2 != 0) {
                 if (del < K) {
