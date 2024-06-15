@@ -14,6 +14,8 @@ public class b15961_solving {
         for (int i = 0; i < N; i++) { arr[N + i] = arr[i]; }
         sc.close();
 
+        int s = 0, e = 0;
+
 
 
     }
