@@ -15,6 +15,9 @@ public class b15961_solving {
         sc.close();
 
         int s = 0, e = 0;
+        while (e < 2 * N) {
+
+        }
 
 
 
