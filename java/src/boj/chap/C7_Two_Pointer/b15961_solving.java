@@ -17,6 +17,7 @@ public class b15961_solving {
         int s = 0, e = 0;
         while (e < 2 * N) {
 
+
         }
 
 
