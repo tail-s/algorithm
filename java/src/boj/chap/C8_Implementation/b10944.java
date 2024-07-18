@@ -3,20 +3,20 @@ package boj.chap.C8_Implementation;
 import java.util.Scanner;
 
 public class b10944 {
-    static int N;
+    static int N, size;
     static boolean[][] paper;
     static StringBuilder sb = new StringBuilder();
     static void marking(int x) {
-        for (int i = x; i < N - x; i++) {
+        for (int i = x; i < size - x; i++) {
             paper[i][x] = true;
             paper[x][i] = true;
-            paper[N - x - 1][i] = true;
-            paper[i][N - x - 1] = true;
+            paper[size - x - 1][i] = true;
+            paper[i][size - x - 1] = true;
         }
     }
     static void drawing() {
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) sb.append(paper[i][j] ? "*" : " ");
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) sb.append(paper[i][j] ? "*" : " ");
             sb.append("\n");
         }
     }
@@ -25,8 +25,9 @@ public class b10944 {
         N = sc.nextInt();
         sc.close();
 
-        paper = new boolean[4 * (N - 1) + 1][4 * (N - 1) + 1];
-        for (int i = 0; i < 2 * N; i+=2) marking(i);
+        size = 4 * (N - 1) + 1;
+        paper = new boolean[size][size];
+        for (int i = 0; i < 2 * N; i += 2) marking(i);
         drawing();
 
         System.out.println(sb);
